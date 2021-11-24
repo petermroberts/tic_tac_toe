@@ -3,7 +3,7 @@ from player import Player
 import random
 
 def create_players():
-    if input("Would you like to be X or O? ").casefold == "x":
+    if input("Would you like to be X or O? ").casefold() == "x":
         return choose_first_turn(Player("Player 1", 1), Player("Player 2", 2))
     else:
         return choose_first_turn(Player("Player 1", 2), Player("Player 2", 1))
