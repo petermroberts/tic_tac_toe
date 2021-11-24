@@ -2,6 +2,12 @@ from game_master import GameMaster
 from player import Player
 import random
 
+def create_players():
+    if input("Would you like to be X or O? ").casefold == "x":
+        return choose_first_turn(Player("Player 1", 1), Player("Player 2", 2))
+    else:
+        return choose_first_turn(Player("Player 1", 2), Player("Player 2", 1))
+
 def roll_die(player):
     player.roll = random.randint(1,6)
 
@@ -24,14 +30,7 @@ def main():
     game_master = GameMaster()
 
     print("Welcome to tic tac toe!\n")
-    if input("Would you like to be X or O? ").casefold == "x":
-        player1 = Player("Player 1", 1)
-        player2 = Player("Player 2", 2)
-    else:
-        player1 = Player("Player 1", 2)
-        player2 = Player("Player 2", 1)
-
-    players = choose_first_turn(player1, player2)
+    players = create_players()
 
     while not game_master.game_over:
         for player in players:
