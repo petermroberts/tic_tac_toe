@@ -1,10 +1,23 @@
 from game_master import GameMaster
+from player import Player
+import random
 
-def select_position(game_master):
+def roll_die(player):
+    player.roll = random.randint(1,6)
+
+def choose_first_turn(player1, player2):
+    roll_die(player1)
+    roll_die(player2)
+    if player1.roll > player2.roll:
+        return [player1, player2]
+    else:
+        return [player2, player1]
+
+def select_position(game_master, player):
     chosen_position = int(input("Please choose where you want to place your marker (1-9)")) - 1
     while game_master.check_position(chosen_position):
         int(input("That position is already filled, please choose again"))
-    game_master.place_marker(chosen_position)
+    game_master.place_marker(chosen_position, player.marker)
 
 def main():
 
@@ -12,15 +25,19 @@ def main():
 
     print("Welcome to tic tac toe!\n")
     if input("Would you like to be X or O?").casefold == "x":
-        game_master.player1_marker = 1
-        game_master.player2_marker = 2
+        player1 = Player(1)
+        player2 = Player(2)
     else:
-        game_master.player1_marker = 2
-        game_master.player2_marker = 1
+        player1 = Player(2)
+        player2 = Player(1)
 
+    players = choose_first_turn(player1, player2)
+
+    # TODO Make a function to convert marker numbers into strings ie 1 > x, 2 > 0
     while not game_master.game_over:
         game_master.print_board()
-        select_position()
+        for player in players:
+            select_position(game_master, player)
 
 if __name__ == "__main__":
     main()
