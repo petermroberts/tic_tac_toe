@@ -14,7 +14,7 @@ def choose_first_turn(player1, player2):
         return [player2, player1]
 
 def select_position(game_master, player):
-    chosen_position = int(input("Please choose where you want to place your marker (1-9): ")) - 1
+    chosen_position = int(input(f"{player.name} please choose where you want to place your marker (1-9): ")) - 1
     while game_master.check_position(chosen_position):
         chosen_position = int(input("That position is already filled, please choose again: "))
     game_master.place_marker(chosen_position, player.marker)
@@ -25,11 +25,11 @@ def main():
 
     print("Welcome to tic tac toe!\n")
     if input("Would you like to be X or O? ").casefold == "x":
-        player1 = Player(1)
-        player2 = Player(2)
+        player1 = Player("Player 1", 1)
+        player2 = Player("Player 2", 2)
     else:
-        player1 = Player(2)
-        player2 = Player(1)
+        player1 = Player("Player 1", 2)
+        player2 = Player("Player 2", 1)
 
     players = choose_first_turn(player1, player2)
 
