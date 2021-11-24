@@ -37,7 +37,7 @@ def main():
         for player in players:
             select_position(game_master, player)
             game_master.print_board()
-            game_master.check_win()
+            print(f"{game_master.check_win()} won!")
 
 if __name__ == "__main__":
     main()
