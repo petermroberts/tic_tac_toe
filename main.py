@@ -33,11 +33,11 @@ def main():
 
     players = choose_first_turn(player1, player2)
 
-    # TODO Make a function to convert marker numbers into strings ie 1 > x, 2 > 0
     while not game_master.game_over:
-        game_master.print_board()
         for player in players:
             select_position(game_master, player)
+            game_master.print_board()
+            game_master.check_win()
 
 if __name__ == "__main__":
     main()
