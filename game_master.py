@@ -30,35 +30,35 @@ class GameMaster:
 
     def check_win(self):
 
-        if self.board[0] == self.board[1] == self.board[2]:
+        if self.board[0] == self.board[1] == self.board[2] != 0:
             self.game_over = True
             return self.board[0]
 
-        elif self.board[3] == self.board[4] == self.board[5]:
+        elif self.board[3] == self.board[4] == self.board[5] != 0:
             self.game_over = True
             return self.board[3]
 
-        elif self.board[6] == self.board[7] == self.board[8]:
+        elif self.board[6] == self.board[7] == self.board[8] != 0:
             self.game_over = True
             return self.board[6]
 
-        elif self.board[0] == self.board[4] == self.board[8]:
+        elif self.board[0] == self.board[4] == self.board[8] != 0:
             self.game_over = True
             return self.board[0]
 
-        elif self.board[2] == self.board[4] == self.board[6]:
+        elif self.board[2] == self.board[4] == self.board[6] != 0:
             self.game_over = True
             return self.board[0]
 
-        elif self.board[0] == self.board[3] == self.board[6]:
+        elif self.board[0] == self.board[3] == self.board[6] != 0:
             self.game_over = True
             return self.board[0]
 
-        elif self.board[1] == self.board[4] == self.board[7]:
+        elif self.board[1] == self.board[4] == self.board[7] != 0:
             self.game_over = True
             return self.board[1]
 
-        elif self.board[2] == self.board[5] == self.board[8]:
+        elif self.board[2] == self.board[5] == self.board[8] != 0:
             self.game_over = True
             return self.board[2]
 
