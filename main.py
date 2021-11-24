@@ -25,11 +25,11 @@ def main():
 
     print("Welcome to tic tac toe!\n")
     if input("Would you like to be X or O?").casefold == "x":
-        player1 = Player({1: "X"})
-        player2 = Player({2: "O"})
+        player1 = Player(1)
+        player2 = Player(2)
     else:
-        player1 = Player({2: "O"})
-        player2 = Player({1: "X"})
+        player1 = Player(2)
+        player2 = Player(1)
 
     players = choose_first_turn(player1, player2)
 
