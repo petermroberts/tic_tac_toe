@@ -5,12 +5,15 @@ class GameMaster:
         self.board = [0, 0, 0,
                       0, 0, 0,
                       0, 0, 0]
-        self.player1_marker = None
-        self.player2_marker = None
         self.game_over = False
 
     def place_marker(self, position, marker):
         self.board[position] = marker
+
+    def check_position(self, position):
+        if self.board[position] != 0:
+            return True
+        return False
 
     def print_board(self):
         x, y, z = 0, 1, 2
