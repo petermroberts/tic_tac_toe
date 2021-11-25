@@ -14,9 +14,9 @@ def choose_first_turn(player1, player2):
         return [player2, player1]
 
 def select_position(game_master, player):
-    chosen_position = int(input(f"{player.name} please choose where you want to place your marker (1-9): ")) - 1
+    
     while game_master.check_position(chosen_position):
-        chosen_position = int(input("That position is already filled, please choose again: "))
+        chosen_position = int(input("That position is already filled, please choose again: ")) - 1
     game_master.place_marker(chosen_position, player.marker)
 
 def main():
@@ -35,10 +35,11 @@ def main():
 
     while not game_master.game_over:
         for player in players:
-            select_position(game_master, player)
             game_master.print_board()
+            select_position(game_master, player)
             if game_master.check_win():
                 print(f"{game_master.check_win()} won!")
+        game_master.print_board()
 
 if __name__ == "__main__":
     main()
