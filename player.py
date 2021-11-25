@@ -1,5 +1,6 @@
 
 class Player:
+
     def __init__(self, name, marker) -> None:
         self.name = name
         self.marker = marker
