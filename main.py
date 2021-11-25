@@ -25,11 +25,7 @@ def choose_first_turn(player1, player2):
 
 # Function to determine where to place marker
 def select_position(game_master, player):
-
-    chosen_position = int(input(f"{player.name} please choose where you want to place your marker (1-9): ")) - 1
-    while game_master.check_position(chosen_position):  # If the position is already chosen, ask for another position
-        chosen_position = int(input("That position is already filled, please choose again: ")) -1
-
+    chosen_position = player.choose_position()
     game_master.place_marker(chosen_position, player.marker)
 
 def main():
