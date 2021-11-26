@@ -1,4 +1,4 @@
-from game_master import GameMaster
+from board import Board
 from player import Player
 import random
 
@@ -24,24 +24,25 @@ def choose_first_turn(player1, player2):
         return [player2, player1]
 
 # Function to determine where to place marker
-def select_position(game_master, player):
-    chosen_position = player.choose_position()
-    game_master.place_marker(chosen_position, player.marker)
+def select_position(board, player):
+    chosen_position = player.choose_position(board)
+    board.place_marker(chosen_position, player.marker)
 
 def main():
 
-    game_master = GameMaster()
+    board = Board()
 
     print("Welcome to tic tac toe!\n")
     players = create_players()
 
-    while not game_master.game_over:
+    while not board.game_over:
         for player in players:
-            game_master.print_board()
-            select_position(game_master, player)
-            if game_master.check_win():
-                print(f"{game_master.check_win()} won!")
-        game_master.print_board()
+            board.print_board()
+            select_position(board, player)
+            if board.check_win():
+                print(f"{board.check_win()} won!")
+                break
+        board.print_board()
 
 if __name__ == "__main__":
     main()

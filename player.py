@@ -1,6 +1,5 @@
 
-from game_master import *
-from main import choose_first_turn
+from board import *
 
 class Player:
 
@@ -10,16 +9,19 @@ class Player:
         self.wins = 0
         self.roll = 0
 
-    def choose_position(self, game_master):
+    def choose_position(self, board):
         try:
-            chosen_position = int(input(f"{self.name} please choose where you want to place your marker (1-9): ")) - 1
-            if game_master.check_postion(chosen_position):
-                raise PositionError("Position already filled, please choose again")
-            if chosen_position > 8 or chosen_position < 0:
-                raise PositionError("Position out of bounds")
+            chosen_position = int(input(f"{self.name} please choose where you want to place your marker (1-9): "))
+            if board.check_position(chosen_position):
+                raise PositionTakenError
+            if not 0 <= chosen_position <= 8:
+                raise PositionOutOfBoundsError
 
-        except PositionError:
-            self.choose_position()
+        except PositionTakenError:
+            self.choose_position(board)
 
-        finally:
+        except PositionOutOfBoundsError:
+            self.choose_position(board)
+
+        else:
             return chosen_position
