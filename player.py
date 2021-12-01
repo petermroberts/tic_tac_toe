@@ -8,6 +8,14 @@ class Player:
         self.marker = marker
         self.wins = 0
         self.roll = 0
+        
+    def take_turn(self, board):
+        self.select_position(board)
+        board.print_board()
+
+    def select_position(self, board):
+        chosen_position = self.choose_position(board)
+        board.place_marker(chosen_position, self.marker)
 
     def choose_position(self, board):
         try:

@@ -23,11 +23,6 @@ def choose_first_turn(player1, player2):
     else:
         return [player2, player1]
 
-# Function to determine where to place marker
-def select_position(board, player):
-    chosen_position = player.choose_position(board)
-    board.place_marker(chosen_position, player.marker)
-
 def main():
 
     board = Board()
@@ -37,12 +32,10 @@ def main():
 
     while not board.game_over:
         for player in players:
-            board.print_board()
-            select_position(board, player)
+            player.take_turn(board)
             if board.check_win():
                 print(f"{board.check_win()} won!")
                 break
-        board.print_board()
 
 if __name__ == "__main__":
     main()
