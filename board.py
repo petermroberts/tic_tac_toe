@@ -11,7 +11,6 @@ class Board:
 
     def check_position(self, position):
         if self.board[position] != 0:
-            print("position taken")
             return True
         else: return False
 
@@ -65,16 +64,17 @@ class Board:
             return None
 
 class PositionTakenError(Exception):
-    '''Exception raised when player chooses a position already filled or not in bounds'''
-    def __init__(self, message="The position you have chosen is taken or out of bounds"):
+    '''Exception raised when player chooses a position already filled'''
+    def __init__(self, position, message="The position you have chosen is taken"):
+        self.position = position
         self.message = message
         super().__init__(self.message)
 
     def __str__(self):
-        return f'{self.position} -> {self.message}'
+        return f'{self.position} is already taken, please choose another position'
 
 class PositionOutOfBoundsError(Exception):
-    '''Exception raised when player chooses a position already filled or not in bounds'''
-    def __init__(self, message="The position you have chosen is taken or out of bounds"):
+    '''Exception raised when player chooses a position not in bounds'''
+    def __init__(self, message="The position you have chosen is out of bounds"):
         self.message = message
         super().__init__(self.message)
