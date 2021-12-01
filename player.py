@@ -18,10 +18,10 @@ class Player:
                 raise PositionOutOfBoundsError
 
         except PositionTakenError:
-            self.choose_position(board)
+            return self.choose_position(board)
 
         except PositionOutOfBoundsError:
-            self.choose_position(board)
+            return self.choose_position(board)
 
         else:
             return chosen_position
