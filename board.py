@@ -70,8 +70,8 @@ class PositionChosenError(Exception):
         self.message = message
         self.error_token = error_token
         self.errors = {
-            "001": "already chosen",
-            "002": "not on the board"
+            "01": "already chosen",
+            "02": "not on the board"
         }
         super().__init__(self.message)
 
