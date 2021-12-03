@@ -30,15 +30,20 @@ def main():
     print("Welcome to tic tac toe!\n")
     players = create_players()
 
-    # Game loop
-    while not board.game_over:
-        # Take each players turn
-        for player in players:
-            player.take_turn(board)
-            # Check to see if player won
-            if board.check_win():
-                print(f"{player} won!")
-                break
+    while True:
+        board.game_over = False
+        # Game loop
+        while not board.game_over:
+            # Take each players turn
+            for player in players:
+                player.take_turn(board)
+                # Check to see if player won
+                if board.check_win():
+                    player.wins += 1
+                    print(f"{player} won!")
+                    break
+        if input("Would you like to play again?")[0].casefold() == "n":
+            break
 
 if __name__ == "__main__":
     main()
