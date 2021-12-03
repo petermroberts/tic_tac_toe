@@ -9,6 +9,9 @@ class Player:
         self.wins = 0
         self.roll = 0
     
+    def __str__(self):
+        return f'{self.name}'
+    
     # Func to run the turn sequence
     def take_turn(self, board):
         self.select_position(board)

@@ -37,7 +37,7 @@ def main():
             player.take_turn(board)
             # Check to see if player won
             if board.check_win():
-                print(f"{board.check_win()} won!")
+                print(f"{player} won!")
                 break
 
 if __name__ == "__main__":

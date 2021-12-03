@@ -32,35 +32,27 @@ class Board:
 
         if self.board[1] == self.board[2] == self.board[3] != 0:
             self.game_over = True
-            return self.numToStr[self.board[1]]
 
         elif self.board[4] == self.board[5] == self.board[6] != 0:
             self.game_over = True
-            return self.numToStr[self.board[4]]
 
         elif self.board[7] == self.board[8] == self.board[9] != 0:
             self.game_over = True
-            return self.numToStr[self.board[7]]
 
         elif self.board[1] == self.board[5] == self.board[9] != 0:
             self.game_over = True
-            return self.numToStr[self.board[1]]
 
         elif self.board[3] == self.board[5] == self.board[7] != 0:
             self.game_over = True
-            return self.numToStr[self.board[3]]
 
         elif self.board[1] == self.board[4] == self.board[7] != 0:
             self.game_over = True
-            return self.numToStr[self.board[1]]
 
         elif self.board[2] == self.board[5] == self.board[8] != 0:
             self.game_over = True
-            return self.numToStr[self.board[1]]
 
         elif self.board[3] == self.board[6] == self.board[9] != 0:
             self.game_over = True
-            return self.numToStr[self.board[2]]
 
         else:
             return None
