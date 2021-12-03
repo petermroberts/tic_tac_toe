@@ -77,14 +77,3 @@ class PositionChosenError(Exception):
 
     def __str__(self):
         return f'Position {self.position} is {self.errors[self.error_token]}, please choose another position: '
-'''
-class PositionOutOfBoundsError(Exception):
-    #Exception raised when player chooses a position not in bounds
-    def __init__(self, position, message="The position you have chosen is out of bounds"):
-        self.position = position
-        self.message = message
-        super().__init__(self.message)
-    
-    def __str__(self):
-        return f'{self.position} is not in the board, please choose another position'
-'''
