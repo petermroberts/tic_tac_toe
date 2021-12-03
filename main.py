@@ -31,7 +31,7 @@ def main():
     players = create_players()
 
     while True:
-        board.game_over = False
+        board = Board()
         # Game loop
         while not board.game_over:
             # Take each players turn
@@ -44,7 +44,7 @@ def main():
                     break
         for player in players:
             print(f'{player}: {player.wins}')
-        if input("Would you like to play again?")[0].casefold() == "n":
+        if input("Would you like to play again?: ")[0].casefold() == "n":
             break
 
 if __name__ == "__main__":
