@@ -63,22 +63,17 @@ class Board:
         else:
             return None
 
-class PositionTakenError(Exception):
+class PositionChosenError(Exception):
     '''Exception raised when player chooses a position already filled'''
-    def __init__(self, position, message="The position you have chosen is taken"):
+    def __init__(self, position, error_token, message="PositionChosenError"):
         self.position = position
         self.message = message
+        self.error_token = error_token
+        self.errors = {
+            "01": "already chosen",
+            "02": "not on the board"
+        }
         super().__init__(self.message)
 
     def __str__(self):
-        return f'{self.position} is already taken, please choose another position'
-
-class PositionOutOfBoundsError(Exception):
-    '''Exception raised when player chooses a position not in bounds'''
-    def __init__(self, position, message="The position you have chosen is out of bounds"):
-        self.position = position
-        self.message = message
-        super().__init__(self.message)
-    
-    def __str__(self):
-        return f'{self.position} is not in the board, please choose another position'
+        return f'Position {self.position} is {self.errors[self.error_token]}, please choose another position: '
