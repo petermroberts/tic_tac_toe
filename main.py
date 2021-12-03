@@ -42,6 +42,8 @@ def main():
                     player.wins += 1
                     print(f"{player} won!")
                     break
+        for player in players:
+            print(f'{player}: {player.wins}')
         if input("Would you like to play again?")[0].casefold() == "n":
             break
 
