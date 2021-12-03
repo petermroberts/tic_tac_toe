@@ -8,14 +8,16 @@ class Player:
         self.marker = marker
         self.wins = 0
         self.roll = 0
-        
+    
+    # Func to run the turn sequence
     def take_turn(self, board):
         self.select_position(board)
         board.print_board()
 
+    # Func to call the user to choose a position
     def select_position(self, board):
-        chosen_position = self.choose_position(board)
-        board.place_marker(chosen_position, self.marker)
+        chosen_position = self.choose_position(board) # Gives a valid position
+        board.place_marker(chosen_position, self.marker) # Places the marker
 
     def choose_position(self, board):
         try:

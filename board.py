@@ -1,64 +1,66 @@
 
 class Board:
 
-    convert_dict = {0: ' ', 1: 'X', 2: 'O'}
+    numToStr = {0: ' ', 1: 'X', 2: 'O'} # This dict is to convert numbers on the board into strings
+
     def __init__(self):
+        # Game board, used ints to reduce complexity
         self.board = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
-        self.game_over = False
+        self.game_over = False # To determine if there was a winner
 
     def place_marker(self, position, marker):
-        self.board[position] = marker
+        self.board[position] = marker # Place the users marker
 
+    # Func to determine if the chosen position has already been filled
     def check_position(self, position):
         if self.board[position] != 0:
             return True
         else: return False
 
+    # Func to print tictactoe board
     def print_board(self):
-        x, y, z = 1, 2, 3
-        for i in range(3):
+        pos_list = [1, 4, 7]
+        for pos in pos_list:
             print("     |     |     ")
-            print(f"  {self.convert_dict[self.board[x]]}  |  {self.convert_dict[self.board[y]]}  |  {self.convert_dict[self.board[z]]}  ")
+            print(f"  {self.numToStr[self.board[pos]]}  |  {self.numToStr[self.board[pos+1]]}  |  {self.numToStr[self.board[pos+2]]}  ")
             print("     |     |     ")
-            x += 3
-            y += 3
-            z += 3
-            if i != 2:
+            if pos != 7:
                 print("-----------------")
 
+    # Func to check if someone won
     def check_win(self):
 
         if self.board[1] == self.board[2] == self.board[3] != 0:
             self.game_over = True
-            return self.convert_dict[self.board[1]]
+            return self.numToStr[self.board[1]]
 
         elif self.board[4] == self.board[5] == self.board[6] != 0:
             self.game_over = True
-            return self.convert_dict[self.board[4]]
+            return self.numToStr[self.board[4]]
 
         elif self.board[7] == self.board[8] == self.board[9] != 0:
             self.game_over = True
-            return self.convert_dict[self.board[7]]
+            return self.numToStr[self.board[7]]
 
         elif self.board[1] == self.board[5] == self.board[9] != 0:
             self.game_over = True
-            return self.convert_dict[self.board[1]]
+            return self.numToStr[self.board[1]]
 
         elif self.board[3] == self.board[5] == self.board[7] != 0:
             self.game_over = True
-            return self.convert_dict[self.board[3]]
+            return self.numToStr[self.board[3]]
 
         elif self.board[1] == self.board[4] == self.board[7] != 0:
             self.game_over = True
-            return self.convert_dict[self.board[1]]
+            return self.numToStr[self.board[1]]
 
         elif self.board[2] == self.board[5] == self.board[8] != 0:
             self.game_over = True
-            return self.convert_dict[self.board[1]]
+            return self.numToStr[self.board[1]]
 
         elif self.board[3] == self.board[6] == self.board[9] != 0:
             self.game_over = True
-            return self.convert_dict[self.board[2]]
+            return self.numToStr[self.board[2]]
 
         else:
             return None
