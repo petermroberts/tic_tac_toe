@@ -1,19 +1,23 @@
 
 class Board:
 
-    convert_dict = {0: ' ', 1: 'X', 2: 'O'}
+    convert_dict = {0: ' ', 1: 'X', 2: 'O'} # This dict is to convert numbers on the board into strings
+
     def __init__(self):
+        # Game board, used ints to reduce complexity
         self.board = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0}
-        self.game_over = False
+        self.game_over = False # To determine if there was a winner
 
     def place_marker(self, position, marker):
-        self.board[position] = marker
+        self.board[position] = marker # Place the users marker
 
+    # Func to determine if the chosen position has already been filled
     def check_position(self, position):
         if self.board[position] != 0:
             return True
         else: return False
 
+    # Func to print tictactoe board
     def print_board(self):
         x, y, z = 1, 2, 3
         for i in range(3):
@@ -26,6 +30,7 @@ class Board:
             if i != 2:
                 print("-----------------")
 
+    # Func to check if someone won
     def check_win(self):
 
         if self.board[1] == self.board[2] == self.board[3] != 0:
