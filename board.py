@@ -19,12 +19,12 @@ class Board:
 
     # Func to print tictactoe board
     def print_board(self):
-        pos_list = [1, 4, 6]
+        pos_list = [1, 4, 7]
         for pos in pos_list:
             print("     |     |     ")
             print(f"  {self.numToStr[self.board[pos]]}  |  {self.numToStr[self.board[pos+1]]}  |  {self.numToStr[self.board[pos+2]]}  ")
             print("     |     |     ")
-            if pos != 6:
+            if pos != 7:
                 print("-----------------")
 
     # Func to check if someone won
