@@ -54,6 +54,8 @@ class Board:
         elif self.board[3] == self.board[6] == self.board[9] != 0:
             self.game_over = True
 
+        if self.game_over == True:
+            return True
         else:
             return None
 
