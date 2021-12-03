@@ -21,15 +21,11 @@ class Player:
         try:
             chosen_position = int(input(f"{self.name} please choose where you want to place your marker (1-9): "))
             if not 0 <= chosen_position <= 8:
-                raise PositionOutOfBoundsError(chosen_position)
+                raise PositionChosenError(chosen_position, "002")
             if board.check_position(chosen_position):
-                raise PositionTakenError(chosen_position)
+                raise PositionChosenError(chosen_position, "001")
 
-        except PositionTakenError as e:
-            print(e)
-            return self.choose_position(board)
-
-        except PositionOutOfBoundsError as e:
+        except PositionChosenError as e:
             print(e)
             return self.choose_position(board)
 
